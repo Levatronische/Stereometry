@@ -1,34 +1,49 @@
 import math
 
 
+def base_formula_1(a, b, c, a1, b1, c1):
+    print((a * a1 + b * b1 + c * c1))
+
+    return abs((a * a1 + b * b1 + c * c1)) / (math.sqrt(abs((a * a + b * b + c * c))) * (math.sqrt(abs((a1 * a1 + b1 * b1 + c1 * c1)))))
+
+
 class point:
     def __init__(self, x, y, z, name=None):
-        self.x = x
-        self.y = y
-        self.z = z
+        self.x = int(x)
+        self.y = int(y)
+        self.z = int(z)
         self.name = name
 
     def coordinates(self):
         return self.x, self.y, self.z
 
-    def x(self):
-        return self.x
 
-    def y(self):
-        return self.y
+class line:
+    def __init__(self, a, b):
+        self.x = b.x - a.x
+        self.y = b.y - a.y
+        self.z = b.z - a.z
+        print(self.x, self.y, self.z)
 
-    def z(self):
-        return self.z
+    def find_the_angle_between_two_lines(self, li):
+        return int(math.degrees
+                   (math.acos(base_formula_1(self.x, self.y, self.z, li.x, li.y, li.z))))
 
 
 class plane:
-    def __init__(self, f_p, s_p, t_p):
-        self.firstInitPoint = f_p
-        self.secondInitPoint = s_p
-        self.thirdInitPoint = t_p
+    def __init__(self, fp, sp, tp):
 
+        self.a = (sp.y - fp.y) * (tp.z - fp.z) - (tp.y - fp.y) * (sp.z - fp.z)
 
-        self.a
-        self.b
-        self.c
-        self.d
+        self.b = (tp.x - fp.x) * (sp.z - fp.z) - (sp.x - fp.x) * (tp.z - fp.z)
+
+        self.c = (sp.x - fp.x) * (tp.y - fp.y) - (tp.x - fp.x) * (sp.y - fp.y)
+
+        self.d = -(fp.x * self.a + fp.y * self.b + fp.z * self.c)
+
+    def formula(self):
+        return self.a, self.b, self.c, self.d
+
+    def find_the_angle_between_two_planes(self, pl):
+        return math.degrees(math.acos(base_formula_1(self.a, self.b, self.c, pl.a, pl.b, pl.c)))
+
