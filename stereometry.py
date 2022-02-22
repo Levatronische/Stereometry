@@ -2,8 +2,6 @@ import math
 
 
 def base_formula_1(a, b, c, a1, b1, c1):
-    print((a * a1 + b * b1 + c * c1))
-
     return abs((a * a1 + b * b1 + c * c1)) / (math.sqrt(abs((a * a + b * b + c * c))) * (math.sqrt(abs((a1 * a1 + b1 * b1 + c1 * c1)))))
 
 
@@ -23,11 +21,12 @@ class line:
         self.x = b.x - a.x
         self.y = b.y - a.y
         self.z = b.z - a.z
-        print(self.x, self.y, self.z)
 
     def find_the_angle_between_two_lines(self, li):
-        return int(math.degrees
-                   (math.acos(base_formula_1(self.x, self.y, self.z, li.x, li.y, li.z))))
+        return math.degrees(math.acos(base_formula_1(self.x, self.y, self.z, li.x, li.y, li.z)))
+
+    def find_the_angle_between_line_and_plane(self, pl):
+        return math.degrees(math.asin(base_formula_1(self.x, self.y, self.z, pl.a, pl.b, pl.c)))
 
 
 class plane:
@@ -46,4 +45,7 @@ class plane:
 
     def find_the_angle_between_two_planes(self, pl):
         return math.degrees(math.acos(base_formula_1(self.a, self.b, self.c, pl.a, pl.b, pl.c)))
+
+    def find_the_angle_between_plane_and_line(self, li):
+        return math.degrees(math.asin(base_formula_1(self.a, self.b, self.c, li.x, li.y, li.z)))
 
