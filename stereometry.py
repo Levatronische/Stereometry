@@ -2,6 +2,7 @@ import math
 
 
 def base_formula_1(a, b, c, a1, b1, c1):
+    print(abs((a * a1 + b * b1 + c * c1)), (math.sqrt(abs((a * a + b * b + c * c))) * (math.sqrt(abs((a1 * a1 + b1 * b1 + c1 * c1))))))
     return abs((a * a1 + b * b1 + c * c1)) / (math.sqrt(abs((a * a + b * b + c * c))) * (math.sqrt(abs((a1 * a1 + b1 * b1 + c1 * c1)))))
 
 
