@@ -8,9 +8,9 @@ def base_formula_1(a, b, c, a1, b1, c1):
 
 class point:
     def __init__(self, x, y, z, name=None):
-        self.x = int(x)
-        self.y = int(y)
-        self.z = int(z)
+        self.x = x
+        self.y = y
+        self.z = z
         self.name = name
 
     def coordinates(self):
@@ -41,6 +41,7 @@ class plane:
 
         self.d = -(fp.x * self.a + fp.y * self.b + fp.z * self.c)
 
+
     def formula(self):
         return self.a, self.b, self.c, self.d
 
@@ -49,4 +50,3 @@ class plane:
 
     def find_the_angle_between_plane_and_line(self, li):
         return math.degrees(math.asin(base_formula_1(self.a, self.b, self.c, li.x, li.y, li.z)))
-
